@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+.pnp.*
+
+# Build output
+dist/
+dist-ssr/
+build/
+*.tsbuildinfo
+
+# Vite / cache
+.vite/
+*.local
+
+# Environment & secrets — NEVER commit these
+# (frontend uses VITE_* PUBLIC config only, but real .env still stays out of git)
+.env
+.env.*
+!.env.example
+
+# Test / coverage
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+/e2e/.auth/
+
+# Editor / OS
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*

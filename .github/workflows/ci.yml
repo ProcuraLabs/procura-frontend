@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    name: Lint, typecheck, test & build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      # The steps below activate once package.json / sources land.
+      # They no-op cleanly on the current scaffold.
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile || echo "No lockfile yet — skipping."
+
+      - name: Lint
+        run: pnpm lint || echo "No lint script yet — skipping."
+
+      - name: Typecheck
+        run: pnpm typecheck || echo "No typecheck script yet — skipping."
+
+      - name: Test
+        run: pnpm test || echo "No tests yet — skipping."
+
+      - name: Build
+        run: pnpm build || echo "No build script yet — skipping."
