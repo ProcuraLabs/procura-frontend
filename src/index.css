@@ -1,22 +1,4 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  color-scheme: light dark;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-}
-
-.app {
-  max-width: 48rem;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-}
+/* Procura design system entry point. Order matters: tokens → base → components. */
+@import './styles/tokens.css';
+@import './styles/base.css';
+@import './styles/components.css';

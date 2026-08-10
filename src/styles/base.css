@@ -1,0 +1,170 @@
+/**
+ * Base layer: a light reset plus default element styling that reads directly
+ * from the design tokens. No component classes here — just sensible, accessible
+ * defaults for raw HTML elements.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
+  background-color: var(--color-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Typography ------------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-bold);
+}
+h2 {
+  font-size: var(--text-2xl);
+}
+h3 {
+  font-size: var(--text-xl);
+}
+h4 {
+  font-size: var(--text-lg);
+}
+h5 {
+  font-size: var(--text-base);
+}
+h6 {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+}
+
+p {
+  line-height: var(--leading-relaxed);
+  text-wrap: pretty;
+}
+
+small {
+  font-size: var(--text-sm);
+}
+
+a {
+  color: var(--color-brand-text);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 1px;
+  transition: color var(--transition-fast) var(--ease);
+}
+
+a:hover {
+  color: var(--color-brand-hover);
+}
+
+strong,
+b {
+  font-weight: var(--weight-semibold);
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+code {
+  padding: 0.1em 0.35em;
+  background-color: var(--color-surface-sunken);
+  border-radius: var(--radius-xs);
+}
+
+hr {
+  border: none;
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+ul,
+ol {
+  padding-inline-start: var(--space-6);
+}
+
+li + li {
+  margin-top: var(--space-1);
+}
+
+/* Media & form-element normalization ------------------------------------ */
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* Global focus states ---------------------------------------------------- */
+:focus-visible {
+  outline: var(--focus-width) solid var(--color-focus);
+  outline-offset: var(--focus-offset);
+  border-radius: var(--radius-xs);
+}
+
+/* Only show the focus ring for keyboard/programmatic focus. */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+::selection {
+  background-color: var(--color-brand);
+  color: var(--color-brand-contrast);
+}
+
+/* Honor reduced-motion preferences -------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
