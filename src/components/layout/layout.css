@@ -1,0 +1,216 @@
+/**
+ * Application shell layout. Component-scoped styles for the header, navigation,
+ * main content area and footer. Reads exclusively from the design tokens so the
+ * shell inherits the system's colors, spacing and dark-mode support.
+ *
+ * Mobile-first: the compact menu button + collapsible panel are the baseline;
+ * the horizontal desktop navigation takes over at the `md` breakpoint (48rem).
+ */
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Skip link -------------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: var(--space-2);
+  z-index: var(--z-toast);
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--color-surface);
+  color: var(--color-brand-text);
+  border: var(--border-width) solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-150%);
+  transition: transform var(--transition-fast) var(--ease);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Header ----------------------------------------------------------------- */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background-color: var(--color-surface);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.app-header__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 4rem;
+}
+
+/* Brand */
+.app-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text);
+  font-weight: var(--weight-semibold);
+  text-decoration: none;
+}
+.app-brand:hover {
+  color: var(--color-text);
+}
+.app-brand__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-brand-contrast);
+  background-color: var(--color-brand);
+  border-radius: var(--radius-sm);
+}
+.app-brand__name {
+  font-size: var(--text-lg);
+  letter-spacing: var(--tracking-tight);
+}
+
+/* Desktop navigation ----------------------------------------------------- */
+.app-nav {
+  display: none; /* hidden until md */
+}
+.app-nav__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.app-nav__link {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition:
+    color var(--transition-fast) var(--ease),
+    background-color var(--transition-fast) var(--ease);
+}
+.app-nav__link:hover {
+  color: var(--color-text);
+  background-color: var(--color-surface-hover);
+}
+.app-nav__link.is-active {
+  color: var(--color-brand-text);
+  background-color: var(--color-brand-subtle);
+}
+
+/* Menu button (mobile only) --------------------------------------------- */
+.app-header__menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--color-text);
+  background-color: transparent;
+  border: var(--border-width) solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--transition-fast) var(--ease);
+}
+.app-header__menu-btn:hover {
+  background-color: var(--color-surface-hover);
+}
+.app-header__menu-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+.app-header__menu-icon {
+  font-size: var(--text-lg);
+  line-height: 1;
+}
+
+/* Mobile navigation panel ------------------------------------------------ */
+.app-mobile-nav {
+  display: block;
+  padding-block: var(--space-2) var(--space-4);
+  border-top: var(--border-width) solid var(--color-border);
+}
+.app-mobile-nav[hidden] {
+  display: none;
+}
+.app-mobile-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.app-mobile-nav__link {
+  display: block;
+  padding: var(--space-3);
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+}
+.app-mobile-nav__link:hover {
+  color: var(--color-text);
+  background-color: var(--color-surface-hover);
+}
+.app-mobile-nav__link.is-active {
+  color: var(--color-brand-text);
+  background-color: var(--color-brand-subtle);
+}
+
+/* Main content ----------------------------------------------------------- */
+.app-main {
+  flex: 1;
+  outline: none;
+}
+.app-main__inner {
+  padding-block: var(--space-8) var(--space-12);
+}
+
+/* Footer ----------------------------------------------------------------- */
+.app-footer {
+  background-color: var(--color-surface);
+  border-top: var(--border-width) solid var(--color-border);
+}
+.app-footer__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding-block: var(--space-6);
+}
+.app-footer__copy {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+.app-footer__note {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* md and up -------------------------------------------------------------- */
+@media (min-width: 48rem) {
+  .app-nav {
+    display: flex;
+  }
+  .app-header__menu-btn,
+  .app-mobile-nav {
+    display: none;
+  }
+}
